@@ -1,4 +1,4 @@
 /snapshots
-/report
+/report/*.jpeg
 /.ssh
 /environment.sh
