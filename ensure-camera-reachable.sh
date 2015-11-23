@@ -50,7 +50,7 @@ while [[ $RETRIES -ne 0 ]]; do
   fi
 
   ((RETRIES=RETRIES - 1))
-  echo "Unreachable, $RETRIES remaining. Waiting $BOOK_CHECK_RETRY_DELAY"
+  echo "Unreachable, $RETRIES remaining. Waiting $BOOT_CHECK_RETRY_DELAY"
   sleep $BOOT_CHECK_RETRY_DELAY
 done
 
