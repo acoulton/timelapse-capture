@@ -1,0 +1,196 @@
+[disp]
+[network]
+rtsp_port           = 554
+allow_udp           = 0
+username            = 
+password            = 
+[sdcard]
+delete_oldest       = 1
+max_file_size       = 134217728
+rec_mode            = 0
+[osd]
+osd00_enabled       = 0
+osd00_date_enabled  = 0
+osd00_tag  = 
+osd01_enabled       = 0
+osd01_date_enabled  = 0
+osd01_tag  = 
+osd02_enabled       = 0
+osd02_date_enabled  = 0
+osd02_tag  = 
+osd03_enabled       = 0
+osd03_date_enabled  = 0
+osd03_tag  = AirCam
+[enc_0]
+input_system        = 2
+temporal_denoise    = 0
+de_interlace        = 0
+[enc_0_0]
+opt_type            = 1
+enc_type            = 0
+fps                 = 15
+width               = 1280
+height              = 720
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 2048000
+reaction_delay_max  = 10
+mjpeg_quality       = 92
+audio_enabled       = 0
+delay               = 0
+enabled_roi         = 1
+roi_x               = 0
+roi_y               = 0
+roi_w               = 80
+roi_h               = 45
+alarm_th            = 16
+alarm_period        = 5
+[enc_0_1]
+opt_type            = 2
+enc_type            = 0
+fps                 = 15
+width               = 1280
+height              = 720
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 1024000
+target_bps_max     = 2048000
+reaction_delay_max  = 10
+mjpeg_quality       = 92
+audio_enabled       = 0
+delay               = 0
+[enc_0_2]
+opt_type            = 2
+enc_type            = 4
+fps                 = 1
+width               = 1280
+height              = 720
+rate_ctl_type       = 3
+max_quant           = 13 
+min_quant           = 13
+init_quant          = 13
+bps                 = 0
+target_bps_max     = 2048000
+reaction_delay_max  = 10
+mjpeg_quality       = 100
+audio_enabled       = 0
+delay               = 0
+[enc_1]
+input_system        = 2
+temporal_denoise    = 0
+de_interlace        = 0
+[enc_1_0]
+opt_type            = 1
+enc_type            = 0
+fps                 = 15
+width               = 640
+height              = 368
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 512000
+reaction_delay_max  = 10
+mjpeg_quality       = 92
+audio_enabled       = 0
+delay               = 0
+enabled_snapshot    = 1
+[enc_1_1]
+opt_type            = 2
+enc_type            = 4
+fps                 = 5
+width               = 640
+height              = 368
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 512000
+reaction_delay_max  = 10
+mjpeg_quality       = 80
+audio_enabled       = 0
+delay               = 0
+[enc_2]
+input_system        = 2
+temporal_denoise    = 0
+de_interlace        = 0
+[enc_2_0]
+opt_type            = 1
+enc_type            = 0
+fps                 = 15
+width               = 320
+height              = 176
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 128000
+reaction_delay_max  = 10
+mjpeg_quality       = 92
+audio_enabled       = 0
+delay               = 0
+[enc_2_1]
+opt_type            = 2
+enc_type            = 4
+fps                 = 1
+width               = 320
+height              = 176
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 128000
+reaction_delay_max  = 10
+mjpeg_quality       = 80
+audio_enabled       = 0
+delay               = 0
+[enc_3]
+input_system        = 2
+temporal_denoise    = 0
+de_interlace        = 0
+[enc_3_0]
+opt_type            = 1
+enc_type            = 0
+fps                 = 15
+width               = 160
+height              = 96
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 32000
+reaction_delay_max  = 10
+mjpeg_quality       = 92
+audio_enabled       = 0
+delay               = 0
+[enc_3_1]
+opt_type            = 2
+enc_type            = 4
+fps                 = 1
+width               = 160
+height              = 96
+rate_ctl_type       = 3
+max_quant           = 51
+min_quant           = 18
+init_quant          = 20
+bps                 = 0
+target_bps_max     = 32000
+reaction_delay_max  = 10
+mjpeg_quality       = 90
+audio_enabled       = 0
+delay               = 0
+################ don't remove it ###############
+################ don't remove it ###############
+################ don't remove it ###############
+################ don't remove it ###############
+################ don't remove it ###############
