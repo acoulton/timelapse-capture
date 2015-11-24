@@ -13,7 +13,7 @@ CAMERA_KEY="$DIR/.ssh/fetcam_ubnt_rsa"
 "$DIR/ensure-camera-reachable.sh"
 
 logecho "Check camera configuration"
-ssh -i "$CAMERA_KEY" "$CAMERA_USER"@"$CAMERA_HOST" /etc/persistent/ensure-correct-streamer-config.sh
+ssh -oServerAliveInterval=10 -oServerAliveCountMax=3 -oConnectTimeout=20 -i "$CAMERA_KEY" "$CAMERA_USER"@"$CAMERA_HOST" /etc/persistent/ensure-correct-streamer-config.sh
 
 SNAPSHOT_DATE=`date +%Y-%m-%d`
 SNAPSHOT_TIME=`date +%H-%M-%S`
@@ -25,7 +25,7 @@ fi
 
 SNAPSHOT_FILE="$SNAPSHOT_PATH/$SNAPSHOT_DATE-$SNAPSHOT_TIME.jpeg"
 logecho "Capturing to $SNAPSHOT_FILE"
-scp -i "$CAMERA_KEY" "$CAMERA_USER"@"$CAMERA_HOST":/tmp/ch00.jpeg "$SNAPSHOT_FILE"
+scp  -oServerAliveInterval=10 -oServerAliveCountMax=3 -oConnectTimeout=20 -i "$CAMERA_KEY" "$CAMERA_USER"@"$CAMERA_HOST":/tmp/ch00.jpeg "$SNAPSHOT_FILE"
 logecho "Done"
 
 logecho "Updating most recent snapshot"
