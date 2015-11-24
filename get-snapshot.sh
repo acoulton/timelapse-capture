@@ -32,5 +32,5 @@ logecho "Updating most recent snapshot"
 cp "$SNAPSHOT_FILE" "$DIR/report/last-snapshot.jpeg"
 
 logecho "Backing up to S3"
-s3cmd --config="$DIR/.s3cfg" put "$SNAPSHOT_FILE" "s3://$S3_BUCKET/snapshots/$SNAPSHOT_DATE/"
+s3cmd --config="$DIR/.s3cfg" --no-progress put "$SNAPSHOT_FILE" "s3://$S3_BUCKET/snapshots/$SNAPSHOT_DATE/"
 logecho "All done"
