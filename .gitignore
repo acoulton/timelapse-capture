@@ -3,3 +3,4 @@
 /.ssh
 /environment.sh
 /videos
+/.s3cfg

@@ -3,3 +3,4 @@
 # Do not commit to source control
 export CAMERA_HOST=10.80.20.100
 export IFTT_KEY={iftt_maker_key_here}
+export S3_BUCKET={bucket name here}
