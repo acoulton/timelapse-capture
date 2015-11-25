@@ -15,7 +15,7 @@ for SNAP_DIR in `find $DIR/snapshots -mindepth 1 -type d`; do
   fi
 
   logecho "Removing previous part-hour videos"
-  rm -f "$VIDEO_PATH/$SNAP_DATE-??-partial.mpg"
+  rm -f $VIDEO_PATH/$SNAP_DATE-??-partial.mpg
 
   for hour in {00..23}; do
     HOURLY_VID="$VIDEO_PATH/$SNAP_DATE-$hour-hourly.mpg"
