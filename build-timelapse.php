@@ -7,8 +7,8 @@ error_reporting(E_ALL);
 ini_set('display_errors',1);
 require(__DIR__.'/vendor/autoload.php');
 
-$start_at = new \DateTime('2015-11-26');
-$end_at   = new \DateTime('2015-12-01');
+$start_at = new \DateTime('2015-11-23');
+$end_at   = new \DateTime();
 
 if ($is_tty = posix_isatty(STDOUT)) {
   print "!!! Not piped to avconv, running in dry-run mode !!!\n";
@@ -16,25 +16,39 @@ if ($is_tty = posix_isatty(STDOUT)) {
 
 // Rates currently used as relative speed - so eg a rate of 3 will drop 1/3 of snapshots
 $day_rate           = 1;
-$night_rate         = 4;
-$weekend_rate       = 3;
-$weekend_night_rate = 6;
+$night_rate         = 12; // was 4 originally
+$weekend_rate       = 8;
+$weekend_night_rate = 20;
+$crimbo_rate        = 16;
 
 
 $schedule = new FrameRateScheduleBuilder;
 
 // General overnight speedup
-$schedule->addRecurringTransition(new \DateTime('2015-11-16 20:00'), new \DateInterval('P1D'), $night_rate);
+$schedule->addRecurringTransition(new \DateTime('2015-11-16 18:00'), new \DateInterval('P1D'), $night_rate);
 $schedule->addRecurringTransition(new \DateTime('2015-11-16 07:00'), new \DateInterval('P1D'), $day_rate);
 
 // Weekends keep at overnight rate, override each transition point
-$schedule->addRecurringTransition(new \DateTime('2015-11-20 20:00'), new \DateInterval('P7D'), $weekend_night_rate);
+$schedule->addRecurringTransition(new \DateTime('2015-11-20 18:00'), new \DateInterval('P7D'), $weekend_night_rate);
 $schedule->addRecurringTransition(new \DateTime('2015-11-21 07:00'), new \DateInterval('P7D'), $weekend_rate);
 $schedule->addRecurringTransition(new \DateTime('2015-11-21 17:00'), new \DateInterval('P7D'), $weekend_night_rate);
-$schedule->addRecurringTransition(new \DateTime('2015-11-21 20:00'), new \DateInterval('P7D'), $weekend_night_rate);
+$schedule->addRecurringTransition(new \DateTime('2015-11-21 18:00'), new \DateInterval('P7D'), $weekend_night_rate);
 $schedule->addRecurringTransition(new \DateTime('2015-11-22 07:00'), new \DateInterval('P7D'), $weekend_rate);
 $schedule->addRecurringTransition(new \DateTime('2015-11-22 17:00'), new \DateInterval('P7D'), $weekend_night_rate);
-$schedule->addRecurringTransition(new \DateTime('2015-11-22 20:00'), new \DateInterval('P7D'), $weekend_night_rate);
+$schedule->addRecurringTransition(new \DateTime('2015-11-22 18:00'), new \DateInterval('P7D'), $weekend_night_rate);
+
+// Christmas go fast right through
+// @todo: need a way to specify end date for recurring transition
+foreach (new \DatePeriod(new \DateTime('2016-12-16'), new \DateInterval('P1D'), new \DateTime('2015-12-29')) as $crimbo_date) {
+  $crimbo_date->setTime(18,00,00);
+  $schedule->setRate($crimbo_date, $crimbo_rate);
+  $crimbo_date = clone $crimbo_date;
+  $crimbo_date->setTime(07,00,00);
+  $schedule->setRate($crimbo_date, $crimbo_rate);
+  $crimbo_date = clone $crimbo_date;
+  $crimbo_date->setTime(17,00,00);
+  $schedule->setRate($crimbo_date, $crimbo_rate);
+}
 
 $rates = new FrameRateController($schedule->listTransitions($start_at, $end_at));
 
