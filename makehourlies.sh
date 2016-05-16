@@ -3,9 +3,10 @@ set -o nounset
 set -o errexit
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/logecho.sh
+TODAY=`date +%Y-%m-%d`
 
-logecho "Building hourly videos from unconverted snapshots"
-for SNAP_DIR in `find $DIR/snapshots -mindepth 1 -type d`; do
+logecho "Building hourly videos from today's unconverted snapshots"
+for SNAP_DIR in `find $DIR/snapshots -mindepth 1 -type d -name "$TODAY"`; do
   SNAP_DATE="${SNAP_DIR##*/}"
   VIDEO_PATH="$DIR/videos/$SNAP_DATE"
   logecho "Processing for $SNAP_DATE in $SNAP_DIR"
@@ -44,7 +45,7 @@ HOUR=`date +%H`
 mv "$DIR/videos/$DATE/$DATE-$HOUR-hourly.mpg" "$DIR/videos/$DATE/$DATE-$HOUR-partial.mpg"
 
 logecho "Removing previous part-day videos"
-rm -f "$DIR/videos/daily/*-partial.mpg"
+rm -f $DIR/videos/daily/*-partial.mpg
 
 logecho "Producing daily videos"
 DAILY_VID_PATH="$DIR/videos/daily"
@@ -52,7 +53,7 @@ if [ ! -d "$DAILY_VID_PATH" ]; then
   mkdir -p "$DAILY_VID_PATH"
 fi
 
-for VIDEO_DIR in `find $DIR/videos -mindepth 1 -type d -name "20*"`; do
+for VIDEO_DIR in `find $DIR/videos -mindepth 1 -type d -name "$TODAY"`; do
   VIDEO_DATE="${VIDEO_DIR##*/}"
   DAILY_VID="$DAILY_VID_PATH/$VIDEO_DATE-daily.mpg"
   if [ -s "$DAILY_VID" ]; then
