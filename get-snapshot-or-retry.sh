@@ -46,5 +46,6 @@ else
   logecho "Snapshot failure, exit code $EXITCODE"
   JUNIT_TEST2="<failure message=\"Exit Code $EXITCODE\" />"
   write_junit
+  exit 0
   exit $EXITCODE
 fi
